@@ -633,6 +633,10 @@ shared_ptr<Configuration> parseCommandLine(int argc, char **argv) {
         else
         {
             // WMBus ids are 8 hex digits iiiiiiii
+            if (id == "ANYID") {
+            id = "*";
+            return true;
+            }
             if (!isValidMatchExpressions(id, true)) error("Not a valid id nor a valid meter match expression \"%s\"\n", id.c_str());
         }
         if (!isValidKey(key, mi.driver)) error("Not a valid meter key \"%s\"\n", key.c_str());
